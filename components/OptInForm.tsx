@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useStaticKit, ValidationError } from '@statickit/react';
-import { addToMailchimp } from '@statickit/functions';
+import { addToConvertKit } from '@statickit/functions';
 
 const OptInForm: React.FC = () => {
   const client = useStaticKit();
 
-  const [emailAddress, setEmailAddress] = useState('');
+  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -14,7 +14,8 @@ const OptInForm: React.FC = () => {
     e.preventDefault();
     setErrors([]);
     setIsSubmitting(true);
-    let resp = await addToMailchimp(client, { emailAddress });
+
+    let resp = await addToConvertKit(client, { email, tags: ['Newsletter'] });
 
     switch (resp.status) {
       case 'ok':
@@ -46,15 +47,15 @@ const OptInForm: React.FC = () => {
           id="email"
           type="email"
           name="email"
-          value={emailAddress}
-          onChange={e => setEmailAddress(e.target.value)}
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           className="block px-4 py-3 w-full rounded bg-gray-200"
           placeholder="you@example.com"
           required
         />
         <ValidationError
           prefix="Email address"
-          field="email_address"
+          field="email"
           errors={errors}
           className="py-2 text-red-600 text-sm font-bold"
         />

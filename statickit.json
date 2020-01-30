@@ -1,8 +1,8 @@
 {
   "functions": {
-    "addToMailchimp": {
-      "app": "mailchimp",
-      "type": "addOrUpdateListMember",
+    "addToConvertKit": {
+      "app": "convertkit",
+      "type": "applyTags",
       "mock": true
     }
   }
