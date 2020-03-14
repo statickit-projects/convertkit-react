@@ -10,7 +10,7 @@ To run this example:
 
 ```bash
 git clone https://github.com/statickit-projects/convertkit-react.git
-cd mailchimp-react
+cd convertkit-react
 npm install
 npm run dev
 ```
